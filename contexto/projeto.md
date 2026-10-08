@@ -12,6 +12,7 @@ Construir em conjunto um aplicativo que use a API da Higgsfield para criar víde
 - Manter a autenticação Higgsfield somente no servidor; o navegador nunca recebe `HF_CREDENTIALS`.
 - Primeiro teste solicitado: Seedance 2.5, texto para vídeo, 5 segundos, 720p e 16:9. Esse teste usa a proporção solicitada, apesar do destino futuro ser TikTok.
 - Não registrar credenciais nas referências, no contexto ou no Git.
+- Avançar devagar e confirmar com o usuário antes de cada nova geração paga, conforme pedido para economizar durante a primeira animação.
 
 ## Estado atual
 
@@ -32,6 +33,8 @@ Construir em conjunto um aplicativo que use a API da Higgsfield para criar víde
 - O usuário autorizou em seguida a inclusão da base React/TypeScript, dependências com lockfile, documentação, referências e contexto no Git. `.env.local`, `node_modules/` e `dist/` ficam fora dos commits.
 
 ## Próximos passos
+
+A [primeira animação Genjutsu](genjutsu.md) foi concluída usando duas solicitações de geração, além do teste inicial. Reutilizar os arquivos existentes e aguardar confirmação antes de gastar com outra geração.
 
 1. Evoluir a interface e o fluxo de vídeos para TikTok conforme novas referências forem recebidas; a geração atual é um exemplo de CLI no servidor, ainda sem botão de geração no frontend.
 2. Manter os registros de referências e contexto atualizados, sem valores de credenciais.

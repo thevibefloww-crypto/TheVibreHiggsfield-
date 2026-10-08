@@ -1,0 +1,4 @@
+[0:v]split=3[base][xsource][ysource];
+[xsource]format=gray,geq=lum='128+18*sin(Y/70-8*T)*if(between(T,5,7),sin(PI*(T-5)/2),0)*clip((abs(X-360)-140)/80,0,1)'[xmap];
+[ysource]format=gray,geq=lum='128+8*sin(X/80-7*T)*if(between(T,5,7),sin(PI*(T-5)/2),0)*clip((abs(X-360)-140)/80,0,1)'[ymap];
+[base][xmap][ymap]displace=edge=smear,format=yuv420p[video]

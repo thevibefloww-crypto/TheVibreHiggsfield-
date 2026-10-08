@@ -12,6 +12,7 @@
     "lint": "oxlint",
     "preview": "vite preview",
     "generate:example": "node --env-file-if-exists=.env.local index.ts",
+    "generate:genjutsu": "node --env-file-if-exists=.env.local server/genjutsu.ts",
     "test": "node --test server/*.test.ts"
   },
   "dependencies": {
