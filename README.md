@@ -33,7 +33,7 @@ npm test
 
 O SDK oficial `@higgsfield/client` está instalado para uso **somente no servidor**, pelo módulo `@higgsfield/client/v2`. Nunca importe o SDK em `src/` nem use uma variável `VITE_` para a credencial.
 
-O arquivo privado `.env.local` foi criado com `HF_CREDENTIALS` vazio. Abra esse arquivo localmente e preencha a variável no formato `key-id:key-secret`. Não envie a chave no chat, não a coloque nesta documentação e não a adicione ao Git. `.env.example` documenta apenas o nome da variável.
+No ambiente atual, o arquivo privado `.env.local` contém `HF_CREDENTIALS`, no formato `key-id:key-secret`, com permissão `600` e ignorado pelo Git. Em outro checkout, crie `.env.local` a partir de `.env.example` e configure uma credencial localmente ou por um vínculo seguro compatível. Não envie a chave no chat, não a coloque nesta documentação e não a adicione ao Git. `.env.example` deve conter somente o nome da variável, sem valor.
 
 Node.js possui carregamento nativo de arquivos de ambiente; não é necessário instalar um loader adicional. O comando do exemplo carrega `.env.local` em tempo de execução sem exibir o valor da chave. Uma variável já configurada no processo tem precedência sobre o arquivo.
 
@@ -59,10 +59,11 @@ Os testes em [`server/seedance.test.ts`](server/seedance.test.ts) usam respostas
 - Documentação oficial do SDK consultada em `https://docs.higgsfield.ai/docs/how-to/sdk`. Ela confirma `@higgsfield/client/v2`, `HF_CREDENTIALS`, `subscribe`, `withPolling: true` e a resposta com `status`.
 - A página oficial do modelo foi consultada após o redirecionamento de `console.higgsfield.ai` para `open.higgsfield.ai`; modelo, parâmetros e campo de resposta `video` foram confirmados. Os quatro domínios necessários estão no rascunho do ambiente: `docs.higgsfield.ai`, `console.higgsfield.ai`, `open.higgsfield.ai` e `api.higgsfield.ai`.
 - Exemplo `index.ts` implementado. Os 13 testes locais, lint e build com verificação de tipos passaram. Credencial e SDK estão fora do código e do build do navegador.
-- `npm run generate:example` foi executado, mas terminou com código 1 por ausência de `HF_CREDENTIALS`, antes de enviar qualquer requisição. A configuração segura ainda não tinha valor vinculado na última verificação.
-- Nenhuma geração paga foi feita e nenhuma URL de vídeo foi obtida. A integração real com Seedance 2.5 continua sem validação.
+- Após uma primeira tentativa bloqueada por ausência de credencial, o valor foi transferido do arquivo de exemplo remoto para `.env.local`, sem exibição, e removido do exemplo público. O histórico remoto anterior ainda contém a exposição; a substituição da chave é recomendada.
+- Uma geração paga real foi executada por `npm run generate:example`: o resultado passou pela checagem `status === 'completed'`, retornou uma URL HTTPS de vídeo e o comando terminou com código 0. Evidência e parâmetros estão em [referencias/geracao-seedance-exemplo.md](referencias/geracao-seedance-exemplo.md).
+- A autenticação usada nesse teste veio do arquivo local privado. Isso não configura um valor no cadastro de segredos do ambiente nem confirma restauração em uma nova tarefa.
 
-Quando uma credencial estiver disponível pelo arquivo local ou por um vínculo seguro compatível com o SDK, executar o exemplo autorizado e confirmar a conclusão e a URL de vídeo. Não trocar o modelo silenciosamente se a conta não tiver acesso ao identificador solicitado.
+Cada nova execução do exemplo pode gerar uma nova cobrança. Execute-o somente quando uma geração for solicitada. Não trocar o modelo silenciosamente se a conta não tiver acesso ao identificador solicitado.
 
 ## Referências e contexto
 

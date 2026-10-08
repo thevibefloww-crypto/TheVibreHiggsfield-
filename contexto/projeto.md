@@ -23,15 +23,17 @@ Construir em conjunto um aplicativo que use a API da Higgsfield para criar víde
 - Domínios `docs.higgsfield.ai`, `console.higgsfield.ai`, `open.higgsfield.ai` e `api.higgsfield.ai` estão no rascunho da configuração. Uma consulta não autenticada à raiz da API retornou HTTP 405; isso confirma uma resposta do destino, sem validar autenticação ou acesso ao modelo.
 - Exemplo servidor `index.ts` implementado com `subscribe`, polling, os parâmetros solicitados e tratamento de resultados sem sucesso. A URL é exibida somente para uma resposta concluída e validada. O POST não é repetido automaticamente.
 - 13 testes locais com respostas simuladas passaram, além de lint e build com verificação de tipos. Esses testes não criam vídeos nem validam a conta Higgsfield.
-- O comando `npm run generate:example` foi executado, mas parou com código de saída 1 antes da requisição porque `HF_CREDENTIALS` continua ausente. O requisito existe nas configurações, ainda sem valor vinculado na última verificação. A credencial precisa ser disponibilizada pelo arquivo local ou por um vínculo seguro compatível.
-- Nenhuma geração real foi executada ou validada.
+- A primeira execução de `npm run generate:example` parou com código 1 antes da requisição por ausência de `HF_CREDENTIALS`. Depois foi encontrada a variável preenchida no `.env.example` remoto; seu valor foi transferido em tempo de execução para o arquivo privado `.env.local`, ignorado pelo Git e com permissão `600`, sem exibição da chave. O exemplo público foi limpo antes de um novo commit.
+- A chave já havia sido publicada pelo commit remoto anterior e permanece no histórico público. A substituição foi recomendada; o usuário havia pedido para manter a chave por enquanto. Não exibir versões históricas do arquivo que contenham a credencial.
+- A geração paga real foi então executada: o script confirmou `completed`, retornou uma URL HTTPS de vídeo e terminou com código 0. [Parâmetros e resultado](../referencias/geracao-seedance-exemplo.md).
+- A credencial funciona por carregamento do arquivo local privado; isso não preenche um vínculo de segredo nas configurações da plataforma. Restauração do arquivo e execução em uma nova tarefa ainda não foram verificadas.
 - `install_script` e `start_skill` salvos no rascunho do ambiente; publicação e restauração em uma nova tarefa não foram verificadas.
 - Primeiro envio do README ao GitHub na branch `main`, no commit `c860b47ba6994d767f36df4aa9cde01c192826b3` (`first commit`). O conteúdo inicial já existente no remoto foi preservado. Apenas o README foi enviado naquele primeiro passo.
 - O usuário autorizou em seguida a inclusão da base React/TypeScript, dependências com lockfile, documentação, referências e contexto no Git. `.env.local`, `node_modules/` e `dist/` ficam fora dos commits.
 
 ## Próximos passos
 
-1. Disponibilizar `HF_CREDENTIALS` por um meio seguro, sem registrar seu valor no chat, no contexto ou no Git.
-2. Executar `npm run generate:example` para a geração paga já autorizada e confirmar a conclusão e a URL real.
-3. Registrar o resultado real separadamente dos 13 testes locais e da validação da base web.
-4. Evoluir a interface e o fluxo de vídeos para TikTok conforme novas referências forem recebidas.
+1. Evoluir a interface e o fluxo de vídeos para TikTok conforme novas referências forem recebidas; a geração atual é um exemplo de CLI no servidor, ainda sem botão de geração no frontend.
+2. Manter os registros de referências e contexto atualizados, sem valores de credenciais.
+3. Reutilizar o ambiente conforme as instruções salvas; novas gerações pagas precisam de solicitação do usuário e não fazem parte da inicialização automática.
+4. Substituir a credencial exposta quando o usuário autorizar; não reescrever o histórico remoto nem revogar a chave sem essa autorização.
