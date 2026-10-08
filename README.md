@@ -39,8 +39,9 @@ Node.js 24 possui carregamento nativo de arquivos de ambiente, por exemplo `node
 ## Estado da integração
 
 - Instalação e importação do SDK verificadas.
-- Acesso às duas documentações oficiais bloqueado pela política de rede na última tentativa. Os domínios necessários foram salvos no rascunho do ambiente: `docs.higgsfield.ai`, `console.higgsfield.ai` e `api.higgsfield.ai`.
-- O exemplo `index.ts` ainda não foi implementado: as páginas oficiais devem ser consultadas antes, conforme solicitado.
+- Documentação oficial do SDK consultada em `https://docs.higgsfield.ai/docs/how-to/sdk`. Ela confirma `@higgsfield/client/v2`, `HF_CREDENTIALS`, `subscribe`, `withPolling: true` e a resposta com `status`.
+- A página oficial do modelo em `console.higgsfield.ai` redireciona para `open.higgsfield.ai`, ainda bloqueado pela política de rede na última tentativa. Os quatro domínios necessários foram salvos no rascunho do ambiente: `docs.higgsfield.ai`, `console.higgsfield.ai`, `open.higgsfield.ai` e `api.higgsfield.ai`.
+- O exemplo `index.ts` ainda não foi implementado: a página oficial do modelo deve ser consultada antes, conforme solicitado.
 - Não foi executada nenhuma geração paga e não foi obtida uma URL de vídeo. A integração com Seedance 2.5 ainda não está validada.
 
 Após liberar a rede e preencher a credencial localmente, consultar a documentação, confirmar o modelo e seus parâmetros, implementar `subscribe` e executar a geração autorizada. Não trocar o modelo silenciosamente caso o identificador solicitado não esteja disponível.
