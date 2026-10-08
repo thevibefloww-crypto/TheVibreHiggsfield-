@@ -25,4 +25,8 @@ Referência inicial recebida em 8 de outubro de 2026.
 
 A documentação oficial do SDK foi consultada em 8 de outubro de 2026. Ela confirma a importação `config` e `higgsfield` de `@higgsfield/client/v2`, autenticação servidor por `HF_CREDENTIALS`, chamada `subscribe` com `input` e `withPolling: true`, e checagem de `result.status === 'completed'` antes de usar os resultados. A versão instalada retorna uma resposta com `status` e `video?.url`, em vez de um `JobSet`.
 
-A página solicitada do modelo redireciona para https://open.higgsfield.ai/models/bytedance/seedance-2.5/text-to-video/api-reference. Esse novo domínio estava bloqueado na última tentativa e foi adicionado ao rascunho de rede. Os parâmetros e a disponibilidade do modelo ainda precisam de confirmação na página oficial antes da implementação. Nenhuma credencial faz parte desta referência.
+A página solicitada do modelo redireciona para https://open.higgsfield.ai/models/bytedance/seedance-2.5/text-to-video/api-reference e também foi consultada em 8 de outubro de 2026, antes da implementação do exemplo. Ela confirma o endpoint `https://api.higgsfield.ai/bytedance/seedance-2.5/text-to-video` e o uso de `subscribe` com `input` e `withPolling: true`. A resposta concluída contém o arquivo no campo `video`.
+
+Parâmetros documentados: `prompt` obrigatório, `duration` inteiro de 4 a 30 segundos (padrão 5), `resolution` em `480p`, `720p` ou `1080p` (padrão `720p`), `aspect_ratio` em `16:9`, `4:3`, `1:1`, `3:4`, `9:16` ou `21:9` (padrão `16:9`), `output_format` em `mp4` ou `mov` (padrão `mp4`), e `generate_audio` booleano (padrão `true`). O exemplo usa somente os quatro parâmetros solicitados e os demais padrões da API.
+
+A documentação confirma o identificador do modelo, mas uma geração com a conta do usuário ainda não foi validada. Nenhuma credencial faz parte desta referência.
